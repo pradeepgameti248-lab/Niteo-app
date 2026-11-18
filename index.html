@@ -3,65 +3,145 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071426">
 <title>NITEO | Night Essentials</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#071426;color:white;font-family:Arial,sans-serif}
-header{padding:22px 18px;background:#0c1d34;display:flex;justify-content:space-between;align-items:center}
+body{margin:0;background:#071426;color:#fff;font-family:Arial,sans-serif}
+header{padding:18px 20px;background:#0c1d34;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
 .logo{font-size:27px;font-weight:900;color:#38a5ff;letter-spacing:2px}
-header small{color:#a9bfd9}
-button{border:0;border-radius:10px;padding:11px 15px;background:#168cff;color:white;font-weight:bold}
-main{padding:20px;max-width:750px;margin:auto}
-.hero{padding:25px 20px;border-radius:18px;background:linear-gradient(130deg,#103b68,#087edb);margin-bottom:24px}
-.hero h1{font-size:29px;margin:8px 0}
-.hero p{color:#e0efff;line-height:1.5}
-h2{font-size:20px;margin:25px 0 14px}
-.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.category{background:#122944;border:1px solid #203c5b;border-radius:14px;padding:18px 5px;text-align:center;font-size:14px}
-.category span{display:block;font-size:27px;margin-bottom:9px}
-.products{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
-.product{background:#122944;border:1px solid #203c5b;border-radius:14px;padding:14px}
-.product .pic{height:75px;display:grid;place-items:center;font-size:42px;background:#1a3655;border-radius:10px}
-.product h3{font-size:16px;margin:12px 0 5px}
-.product small{color:#a9bfd9}
+.tag{font-size:11px;color:#a9bfd9}
+button{border:0;border-radius:10px;padding:11px 15px;background:#168cff;color:white;font-weight:bold;cursor:pointer}
+main{padding:20px;max-width:850px;margin:auto}
+.hero{padding:27px 22px;border-radius:20px;background:linear-gradient(120deg,#123f70,#087fd5);margin:12px 0 28px}
+.hero h1{font-size:32px;margin:12px 0}
+.hero p{line-height:1.6;color:#e0efff}
+input{width:100%;padding:15px;border:1px solid #294766;border-radius:12px;background:#102641;color:white;font-size:16px;margin:10px 0}
+h2{font-size:21px;margin:28px 0 15px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.category{background:#122944;border:1px solid #203c5b;border-radius:15px;padding:16px 5px;text-align:center;color:white}
+.category span{display:block;font-size:26px;margin-bottom:8px}
+.category.active{background:#075a9e;border-color:#38a5ff}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.product{background:#122944;border:1px solid #203c5b;border-radius:17px;padding:13px}
+.pic{height:110px;border-radius:12px;background:#1b3857;display:grid;place-items:center;font-size:48px}
+.product h3{margin:12px 0 6px;font-size:16px}
+.product p{color:#a9bfd9;font-size:13px;margin:5px 0}
 .price{color:#55b2ff;font-weight:bold;margin:12px 0}
+.product button{width:100%}
+.cart{background:#102641;border:1px solid #294766;padding:16px;border-radius:15px;margin-top:25px}
+.cartline{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #294766}
 footer{text-align:center;padding:25px;color:#8da8c5;font-size:13px}
+@media(min-width:650px){.products{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
 <header>
-<div>
-<div class="logo">NITEO ⚡</div>
-<small>Your night-time essentials partner</small>
-</div>
-<button onclick="alert('WhatsApp ordering will be connected in a future module.')">Order</button>
+ <div>
+  <div class="logo">NITEO</div>
+  <div class="tag">YOUR NIGHT-TIME ESSENTIALS PARTNER</div>
+ </div>
+ <div>
+  <button onclick="changeLang()" id="lang">हिन्दी</button>
+  <button onclick="showCart()">🛒 <span id="count">0</span></button>
+ </div>
 </header>
+
 <main>
-<section class="hero">
-<small>OPEN 24 HOURS · EVERY DAY</small>
-<h1>Essentials, anytime.</h1>
-<p>Craving something? Need something? NITEO is here for your everyday essentials.</p>
-<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore products ↓</button>
-</section>
-<h2>Shop by category</h2>
-<div class="categories">
-<div class="category"><span>🥤</span>Cold Drinks</div>
-<div class="category"><span>🍟</span>Snacks</div>
-<div class="category"><span>🍪</span>Biscuits</div>
-<div class="category"><span>🍜</span>Maggi</div>
-<div class="category"><span>🥛</span>Dairy</div>
-<div class="category"><span>🧼</span>Daily Needs</div>
-</div>
-<h2 id="products">Popular products</h2>
-<div class="products">
-<div class="product"><div class="pic">🥤</div><h3>Cold Drink</h3><small>Chilled refreshment</small><div class="price">Sample price</div></div>
-<div class="product"><div class="pic">🍟</div><h3>Potato Chips</h3><small>Crunchy snacks</small><div class="price">Sample price</div></div>
-<div class="product"><div class="pic">🍜</div><h3>Maggi</h3><small>Quick food</small><div class="price">Sample price</div></div>
-<div class="product"><div class="pic">🥛</div><h3>Buttermilk</h3><small>Refreshing dairy</small><div class="price">Sample price</div></div>
-</div>
+ <section class="hero">
+  <small id="open">OPEN 24 HOURS · EVERY DAY</small>
+  <h1 id="headline">Essentials, anytime.</h1>
+  <p id="intro">Craving something? Need something? NITEO is here for your everyday essentials.</p>
+  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" id="explore">Explore products ↓</button>
+ </section>
+
+ <input id="search" placeholder="🔍 Search products..." oninput="renderProducts()">
+
+ <h2 id="catTitle">Shop by category</h2>
+ <div class="categories" id="categories"></div>
+
+ <h2 id="popular">Popular products</h2>
+ <div class="products" id="products"></div>
+
+ <section class="cart" id="cart">
+  <h2 id="cartTitle">Your cart</h2>
+  <div id="cartItems">Your cart is empty.</div>
+  <h3 id="total">Total: ₹0</h3>
+  <button onclick="checkout()" id="checkout">Continue</button>
+  <p id="note" style="color:#a9bfd9;font-size:12px">Demo cart. Online ordering will be connected in the next development stage.</p>
+ </section>
 </main>
+
 <footer>© NITEO · Your night-time essentials partner</footer>
+
+<script>
+const items=[
+ {id:1,name:"Cold Drink",hi:"कोल्ड ड्रिंक",cat:"Drinks",emoji:"🥤",price:0},
+ {id:2,name:"Potato Chips",hi:"आलू चिप्स",cat:"Snacks",emoji:"🍟",price:0},
+ {id:3,name:"Biscuits",hi:"बिस्कुट",cat:"Biscuits",emoji:"🍪",price:0},
+ {id:4,name:"Maggi",hi:"मैगी",cat:"Maggi",emoji:"🍜",price:0},
+ {id:5,name:"Milk",hi:"दूध",cat:"Dairy",emoji:"🥛",price:0},
+ {id:6,name:"Daily Needs",hi:"रोजमर्रा का सामान",cat:"Daily Needs",emoji:"🧼",price:0}
+];
+const cats=[
+ {name:"All",hi:"सभी",emoji:"🛍️"},
+ {name:"Drinks",hi:"ड्रिंक्स",emoji:"🥤"},
+ {name:"Snacks",hi:"स्नैक्स",emoji:"🍟"},
+ {name:"Biscuits",hi:"बिस्कुट",emoji:"🍪"},
+ {name:"Maggi",hi:"मैगी",emoji:"🍜"},
+ {name:"Dairy",hi:"डेयरी",emoji:"🥛"},
+ {name:"Daily Needs",hi:"जरूरत का सामान",emoji:"🧼"}
+];
+let hindi=false,active="All",cart={};
+
+function renderCategories(){
+ document.getElementById("categories").innerHTML=cats.map(c=>
+ `<button class="category ${active===c.name?'active':''}" onclick="choose('${c.name}')"><span>${c.emoji}</span>${hindi?c.hi:c.name}</button>`
+ ).join("");
+}
+function choose(c){active=c;renderCategories();renderProducts()}
+function renderProducts(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=items.filter(p=>(active==="All"||p.cat===active)&&
+ (p.name.toLowerCase().includes(q)||p.hi.includes(q)));
+ document.getElementById("products").innerHTML=list.map(p=>
+ `<article class="product"><div class="pic">${p.emoji}</div>
+ <h3>${hindi?p.hi:p.name}</h3>
+ <p>${hindi?"रोजमर्रा की जरूरत":"Everyday essential"}</p>
+ <div class="price">${p.price? "₹"+p.price : (hindi?"कीमत जल्द":"Price to be added")}</div>
+ <button onclick="add(${p.id})">${hindi?"कार्ट में जोड़ें":"Add to cart"}</button></article>`
+ ).join("")||"<p>No products found.</p>";
+}
+function add(id){cart[id]=(cart[id]||0)+1;renderCart()}
+function renderCart(){
+ let count=Object.values(cart).reduce((a,b)=>a+b,0);
+ document.getElementById("count").textContent=count;
+ let total=0;
+ let lines=Object.entries(cart).map(([id,qty])=>{
+ let p=items.find(x=>x.id==id);total+=p.price*qty;
+ return `<div class="cartline"><span>${hindi?p.hi:p.name} × ${qty}</span><button onclick="removeItem(${id})">−</button></div>`;
+ });
+ document.getElementById("cartItems").innerHTML=lines.join("")||(hindi?"आपका कार्ट खाली है।":"Your cart is empty.");
+ document.getElementById("total").textContent=(hindi?"कुल: ₹":"Total: ₹")+total;
+}
+function removeItem(id){if(cart[id]>1)cart[id]--;else delete cart[id];renderCart()}
+function showCart(){document.getElementById("cart").scrollIntoView({behavior:"smooth"})}
+function checkout(){alert(hindi?"ऑनलाइन ऑर्डर सुविधा अगले चरण में जोड़ी जाएगी।":"Online ordering will be connected in the next development stage.")}
+function changeLang(){
+ hindi=!hindi;
+ document.getElementById("lang").textContent=hindi?"English":"हिन्दी";
+ document.getElementById("headline").textContent=hindi?"हर समय जरूरी सामान":"Essentials, anytime.";
+ document.getElementById("intro").textContent=hindi?"आपकी रोजमर्रा की जरूरतों के लिए NITEO हमेशा तैयार है।":"Craving something? Need something? NITEO is here for your everyday essentials.";
+ document.getElementById("explore").textContent=hindi?"प्रोडक्ट देखें ↓":"Explore products ↓";
+ document.getElementById("catTitle").textContent=hindi?"कैटेगरी चुनें":"Shop by category";
+ document.getElementById("popular").textContent=hindi?"लोकप्रिय प्रोडक्ट":"Popular products";
+ document.getElementById("cartTitle").textContent=hindi?"आपका कार्ट":"Your cart";
+ document.getElementById("checkout").textContent=hindi?"आगे बढ़ें":"Continue";
+ document.getElementById("open").textContent=hindi?"24 घंटे · हर दिन खुला":"OPEN 24 HOURS · EVERY DAY";
+ renderCategories();renderProducts();renderCart();
+}
+renderCategories();renderProducts();renderCart();
+</script>
 </body>
 </html>
