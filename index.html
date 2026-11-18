@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<title>NITEO | Night Essentials</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#071426;color:white;font-family:Arial,sans-serif}
+header{padding:22px 18px;background:#0c1d34;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:900;color:#38a5ff;letter-spacing:2px}
+header small{color:#a9bfd9}
+button{border:0;border-radius:10px;padding:11px 15px;background:#168cff;color:white;font-weight:bold}
+main{padding:20px;max-width:750px;margin:auto}
+.hero{padding:25px 20px;border-radius:18px;background:linear-gradient(130deg,#103b68,#087edb);margin-bottom:24px}
+.hero h1{font-size:29px;margin:8px 0}
+.hero p{color:#e0efff;line-height:1.5}
+h2{font-size:20px;margin:25px 0 14px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.category{background:#122944;border:1px solid #203c5b;border-radius:14px;padding:18px 5px;text-align:center;font-size:14px}
+.category span{display:block;font-size:27px;margin-bottom:9px}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.product{background:#122944;border:1px solid #203c5b;border-radius:14px;padding:14px}
+.product .pic{height:75px;display:grid;place-items:center;font-size:42px;background:#1a3655;border-radius:10px}
+.product h3{font-size:16px;margin:12px 0 5px}
+.product small{color:#a9bfd9}
+.price{color:#55b2ff;font-weight:bold;margin:12px 0}
+footer{text-align:center;padding:25px;color:#8da8c5;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<div>
+<div class="logo">NITEO ⚡</div>
+<small>Your night-time essentials partner</small>
+</div>
+<button onclick="alert('WhatsApp ordering will be connected in a future module.')">Order</button>
+</header>
+<main>
+<section class="hero">
+<small>OPEN 24 HOURS · EVERY DAY</small>
+<h1>Essentials, anytime.</h1>
+<p>Craving something? Need something? NITEO is here for your everyday essentials.</p>
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore products ↓</button>
+</section>
+<h2>Shop by category</h2>
+<div class="categories">
+<div class="category"><span>🥤</span>Cold Drinks</div>
+<div class="category"><span>🍟</span>Snacks</div>
+<div class="category"><span>🍪</span>Biscuits</div>
+<div class="category"><span>🍜</span>Maggi</div>
+<div class="category"><span>🥛</span>Dairy</div>
+<div class="category"><span>🧼</span>Daily Needs</div>
+</div>
+<h2 id="products">Popular products</h2>
+<div class="products">
+<div class="product"><div class="pic">🥤</div><h3>Cold Drink</h3><small>Chilled refreshment</small><div class="price">Sample price</div></div>
+<div class="product"><div class="pic">🍟</div><h3>Potato Chips</h3><small>Crunchy snacks</small><div class="price">Sample price</div></div>
+<div class="product"><div class="pic">🍜</div><h3>Maggi</h3><small>Quick food</small><div class="price">Sample price</div></div>
+<div class="product"><div class="pic">🥛</div><h3>Buttermilk</h3><small>Refreshing dairy</small><div class="price">Sample price</div></div>
+</div>
+</main>
+<footer>© NITEO · Your night-time essentials partner</footer>
+</body>
+</html>
