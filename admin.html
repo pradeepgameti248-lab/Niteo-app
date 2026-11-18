@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NITEO Admin Dashboard</title>
+<style>
+:root {
+  --bg:#07111f;
+  --panel:#101f33;
+  --panel2:#162942;
+  --blue:#168cff;
+  --text:#f4f8ff;
+  --muted:#9aabc1;
+  --border:#263c57;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+header {
+  padding:20px;
+  background:#0b192b;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo {font-size:25px;font-weight:800;letter-spacing:3px}
+.logo span {color:var(--blue)}
+header small {color:var(--muted)}
+.layout {display:flex;min-height:calc(100vh - 70px)}
+nav {
+  width:220px;
+  padding:20px 12px;
+  background:#0b192b;
+  border-right:1px solid var(--border);
+}
+nav button {
+  width:100%;
+  padding:14px;
+  margin:4px 0;
+  background:transparent;
+  border:0;
+  border-radius:9px;
+  color:var(--muted);
+  text-align:left;
+  font-size:15px;
+  cursor:pointer;
+}
+nav button.active,nav button:hover {
+  background:#15365b;
+  color:white;
+}
+main {padding:25px;width:100%;min-width:0}
+h1 {margin:0 0 8px;font-size:26px}
+.subtitle {color:var(--muted);margin-bottom:25px}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+}
+.card,.section {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:19px;
+}
+.card small {color:var(--muted)}
+.card h2 {font-size:27px;margin:12px 0 5px}
+.blue {color:#50aaff}
+.section {margin-top:22px}
+.section h2 {font-size:18px;margin-top:0}
+table {width:100%;border-collapse:collapse}
+th,td {
+  padding:13px 9px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+th {color:var(--muted)}
+.status {
+  color:#75e0a1;
+  background:#123b31;
+  padding:5px 9px;
+  border-radius:20px;
+}
+.notice {color:var(--muted);line-height:1.6}
+.action {
+  background:var(--blue);
+  color:white;
+  padding:10px 15px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+}
+.page {display:none}
+.page.active {display:block}
+input,select {
+  background:#0a192a;
+  color:white;
+  border:1px solid var(--border);
+  padding:11px;
+  border-radius:8px;
+  width:100%;
+  margin:7px 0 14px;
+}
+.form-box {max-width:420px}
+@media(max-width:750px) {
+  .layout {display:block}
+  nav {
+    width:100%;
+    display:flex;
+    overflow-x:auto;
+    padding:8px;
+    border-right:0;
+  }
+  nav button {min-width:max-content;width:auto}
+  main {padding:16px}
+  .cards {grid-template-columns:repeat(2,minmax(0,1fr))}
+  header {padding:15px}
+}
+@media(max-width:380px) {
+  .cards {grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">NIT<span>EO</span></div>
+  <small>ADMIN PANEL · DEMO</small>
+</header>
+
+<div class="layout">
+<nav>
+  <button class="active" onclick="showPage('overview',this)">▦ Overview</button>
+  <button onclick="showPage('orders',this)">▤ Orders</button>
+  <button onclick="showPage('products',this)">▣ Products</button>
+  <button onclick="showPage('delivery',this)">♧ Delivery</button>
+  <button onclick="showPage('offers',this)">％ Offers</button>
+  <button onclick="showPage('reports',this)">▥ Reports</button>
+  <button onclick="showPage('settings',this)">⚙ Settings</button>
+</nav>
+
+<main>
+<section id="overview" class="page active">
+  <h1>Dashboard Overview</h1>
+  <p class="subtitle">Welcome to your NITEO control centre.</p>
+  <div class="cards">
+    <div class="card"><small>Today's Orders</small><h2>0</h2><small>Demo data</small></div>
+    <div class="card"><small>Today's Sales</small><h2>₹0</h2><small>Demo data</small></div>
+    <div class="card"><small>Pending Orders</small><h2>0</h2><small>Demo data</small></div>
+    <div class="card"><small>Products</small><h2>0</h2><small>Demo data</small></div>
+  </div>
+  <div class="section">
+    <h2>Welcome to NITEO Admin</h2>
+    <p class="notice">Your shop management dashboard starts here. Orders, sales and products will appear here after we connect the secure backend.</p>
+  </div>
+  <div class="section">
+    <h2>Recent Orders</h2>
+    <p class="notice">No real orders connected yet.</p>
+  </div>
+</section>
+
+<section id="orders" class="page">
+  <h1>Orders</h1>
+  <p class="subtitle">Manage customer orders.</p>
+  <div class="section">
+    <h2>Order Management</h2>
+    <p class="notice">Real customer orders will appear here after backend integration.</p>
+  </div>
+</section>
+
+<section id="products" class="page">
+  <h1>Products</h1>
+  <p class="subtitle">Product management preview.</p>
+  <div class="section">
+    <h2>Add a Product · Demo</h2>
+    <div class="form-box">
+      <label>Product name</label>
+      <input id="productName" placeholder="Example: Cold Drink">
+      <label>Price (₹)</label>
+      <input id="productPrice" type="number" placeholder="Example: 40">
+      <label>Stock quantity</label>
+      <input id="productStock" type="number" placeholder="Example: 20">
+      <button class="action" onclick="addDemoProduct()">Add Demo Product</button>
+      <p id="productMessage" class="notice"></p>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Demo Product List</h2>
+    <div id="productList" class="notice">No demo products added.</div>
+  </div>
+</section>
+
+<section id="delivery" class="page">
+  <h1>Delivery</h1>
+  <p class="subtitle">Rider management preview.</p>
+  <div class="section">
+    <h2>Delivery Operations</h2>
+    <p class="notice">Rider accounts, assignment and live tracking will be connected later. Location access will only be used during active deliveries with rider permission.</p>
+  </div>
+</section>
+
+<section id="offers" class="page">
+  <h1>Offers & Coupons</h1>
+  <p class="subtitle">Promotions management preview.</p>
+  <div class="section">
+    <h2>Coupons</h2>
+    <p class="notice">Create and manage coupons after backend integration.</p>
+  </div>
+</section>
+
+<section id="reports" class="page">
+  <h1>Reports</h1>
+  <p class="subtitle">Business performance.</p>
+  <div class="section">
+    <h2>Sales Reports</h2>
+    <p class="notice">Daily, weekly and monthly reports will be available after real order data is connected.</p>
+  </div>
+</section>
+
+<section id="settings" class="page">
+  <h1>Settings</h1>
+  <p class="subtitle">NITEO shop settings preview.</p>
+  <div class="section">
+    <h2>Shop Information</h2>
+    <p class="notice">Shop hours: 24 hours · Delivery radius: 3 km · Minimum order: ₹100</p>
+    <p class="notice">Delivery charge: ₹8 per km</p>
+  </div>
+</section>
+</main>
+</div>
+
+<script>
+function showPage(pageId,button) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  button.classList.add('active');
+}
+
+function addDemoProduct() {
+  const name=document.getElementById('productName').value.trim();
+  const price=document.getElementById('productPrice').value;
+  const stock=document.getElementById('productStock').value;
+  const message=document.getElementById('productMessage');
+
+  if(!name || price==='' || stock==='') {
+    message.textContent='Please fill in all three fields.';
+    return;
+  }
+  if(Number(price)<0 || Number(stock)<0) {
+    message.textContent='Enter valid non-negative numbers.';
+    return;
+  }
+
+  const item=document.createElement('p');
+  item.textContent=name+' — ₹'+price+' — Stock: '+stock;
+  document.getElementById('productList').appendChild(item);
+  message.textContent='Demo product added on this page.';
+  document.getElementById('productName').value='';
+  document.getElementById('productPrice').value='';
+  document.getElementById('productStock').value='';
+}
+</script>
+</body>
+</html>
