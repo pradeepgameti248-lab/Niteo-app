@@ -271,6 +271,20 @@ function addDemoProduct() {
 </script>
 <script type="module">
     // Firebase connection will go here
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
+    const firebaseConfig = {
+          apiKey: "AIzaSyBcuraqVf6k3YYX0Y7llOsKRsUqptMaNHs",
+              authDomain: "niteo-1573f.firebaseapp.com",
+                  projectId: "niteo-1573f",
+                      storageBucket: "niteo-1573f.firebasestorage.app",
+                          messagingSenderId: "646908985327",
+                              appId: "1:646908985327:web:58d17836f11c256d4d801a"
+                                };
+
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
     </script>
 </body>
 </html>
